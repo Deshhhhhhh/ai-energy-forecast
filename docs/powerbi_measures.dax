@@ -1,0 +1,11 @@
+Cheapest Spot Region =
+CALCULATE(
+    SELECTEDVALUE(cloud_pricing[region]),
+    TOPN(1, ALL(cloud_pricing), cloud_pricing[spot_usd_per_gpu_hour], ASC)
+)
+
+Greenest Region =
+CALCULATE(
+    SELECTEDVALUE(forecast_results[region]),
+    TOPN(1, ALL(forecast_results[region]), CALCULATE(SUM(forecast_results[total_carbon_kg])), ASC)
+)
